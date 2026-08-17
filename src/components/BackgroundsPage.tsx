@@ -5,6 +5,7 @@ import { getBackgroundItems } from "../lib/catalog";
 import { CopyButton } from "./CopyButton";
 import { MediaFrame } from "./MediaFrame";
 import { SectionHeader } from "./SectionHeader";
+import { getCategoryLabel } from "../i18n/zh-CN";
 
 export function BackgroundsPage() {
   const [showAll, setShowAll] = useState(false);
@@ -14,9 +15,9 @@ export function BackgroundsPage() {
   return (
     <section className="page-shell py-14">
       <SectionHeader
-        eyebrow="Animated backgrounds"
-        title="Preview media references"
-        copy={`${backgrounds.length} public media references from the local prompt archive. Copy the URL or open the matching prompt from the catalogue.`}
+        eyebrow="动态背景"
+        title="预览媒体参考"
+        copy={`本地提示词档案中共有 ${backgrounds.length} 个公开媒体参考。你可以复制 URL，或在目录中打开对应提示词。`}
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visible.map((item) => (
@@ -28,18 +29,18 @@ export function BackgroundsPage() {
             onPointerLeave={resetCardPointer}
           >
             <div className="motion-card-sheen" aria-hidden="true" />
-            <MediaFrame item={item} className="h-[280px]" label={item.mediaType === "video" ? "Motion" : "Image"} />
+            <MediaFrame item={item} className="h-[280px]" label={item.mediaType === "video" ? "动态预览" : "图片预览"} />
             <div className="relative z-20 space-y-4 p-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="text-lg font-black uppercase leading-5 tracking-[-0.02em]">{item.title}</h2>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-white/44">{item.category}</p>
+                  <p className="mt-1 text-xs font-semibold tracking-[0.08em] text-white/44">{getCategoryLabel(item.category)}</p>
                 </div>
                 <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-emerald-100">
-                  Free
+                  免费
                 </span>
               </div>
-              <CopyButton text={item.mediaUrl || item.posterUrl || ""} label="Copy URL" />
+              <CopyButton text={item.mediaUrl || item.posterUrl || ""} label="复制 URL" />
             </div>
           </article>
         ))}
@@ -51,7 +52,7 @@ export function BackgroundsPage() {
             onClick={() => setShowAll(true)}
             className="rounded-full bg-cta-gradient px-6 py-3 text-[12px] font-black uppercase tracking-[0.14em] text-white shadow-glow"
           >
-            Show all backgrounds
+            显示全部背景
           </button>
         </div>
       ) : null}

@@ -6,6 +6,7 @@ import { canLivePreview } from "../lib/catalog";
 import { CopyButton } from "./CopyButton";
 import { DownloadButton } from "./DownloadButton";
 import { MediaFrame } from "./MediaFrame";
+import { getCategoryLabel } from "../i18n/zh-CN";
 
 export function PromptModal({ item, onClose }: { item: CatalogItem | null; onClose: () => void }) {
   useEffect(() => {
@@ -31,14 +32,14 @@ export function PromptModal({ item, onClose }: { item: CatalogItem | null; onClo
           <div className="min-w-0">
             <h2 className="truncate text-xl font-black uppercase tracking-[-0.02em] sm:text-2xl md:text-3xl">{item.title}</h2>
             <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-white/48">
-              {item.category} / {item.sourceMode === "original" ? "Original source" : "Working reconstruction"} / Free
+              {getCategoryLabel(item.category)} / {item.sourceMode === "original" ? "原始来源" : "工作版重建"} / 免费
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/18 bg-white/[0.04] text-white transition-colors hover:bg-white/10 sm:h-12 sm:w-12"
-            aria-label="Close preview"
+            aria-label="关闭预览"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -50,22 +51,22 @@ export function PromptModal({ item, onClose }: { item: CatalogItem | null; onClo
           </div>
           <div className="flex min-h-[360px] min-w-0 flex-col overflow-hidden rounded-[20px] border border-white/10 bg-black/18 lg:min-h-0">
             <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-white/10 p-3 sm:p-4">
-              <span className="text-xs font-black uppercase tracking-[0.16em] text-white/60">Prompt</span>
+              <span className="text-xs font-black tracking-[0.08em] text-white/60">英文提示词原文</span>
               <div className="flex flex-wrap gap-2">
                 {livePreview ? (
                   <Link
                     to={`/preview/${item.slug}`}
                     className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-white px-4 text-[11px] font-black uppercase tracking-[0.12em] text-[#171717] transition-transform hover:-translate-y-0.5 sm:px-5"
                   >
-                    Live Preview
+                    在线预览
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 ) : null}
                 <CopyButton text={item.prompt} variant="gradient" />
-                <DownloadButton text={item.prompt} filename={`${item.slug}.md`} variant="gradient" label="Download" />
+                <DownloadButton text={item.prompt} filename={`${item.slug}.md`} variant="gradient" label="下载" />
               </div>
             </div>
-            <pre className="min-h-0 flex-1 overflow-auto whitespace-pre-wrap break-words p-4 font-mono text-[13px] leading-6 text-white/72 [overflow-wrap:anywhere] sm:text-sm">
+            <pre lang="en" className="min-h-0 flex-1 overflow-auto whitespace-pre-wrap break-words p-4 font-mono text-[13px] leading-6 text-white/72 [overflow-wrap:anywhere] sm:text-sm">
               {item.prompt}
             </pre>
           </div>

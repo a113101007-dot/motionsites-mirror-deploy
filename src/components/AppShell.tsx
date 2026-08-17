@@ -5,10 +5,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { catalogSummary } from "../data/prompts.generated";
 
 const navItems = [
-  { label: "6 Extracted Examples", to: "/examples", badge: "6 Live" },
-  { label: "Search Premium Prompts", to: "/search", badge: "New" },
-  { label: "Backgrounds", to: "/backgrounds", badge: "Free" },
-  { label: "Gradients", to: "/gradients" },
+  { label: "6 个交互示例", to: "/examples", badge: "在线" },
+  { label: "搜索提示词", to: "/search", badge: "推荐" },
+  { label: "动态背景", to: "/backgrounds", badge: "免费" },
+  { label: "渐变背景", to: "/gradients" },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -31,10 +31,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="min-h-screen overflow-x-clip pb-16 relative">
+    <div className="relative min-h-screen overflow-x-clip pb-28 sm:pb-20">
       <header className="fixed left-0 right-0 top-0 z-40 bg-[#171717]/90 backdrop-blur-xl">
         <nav className="page-shell flex h-20 items-center justify-between gap-5">
-          <NavLink to="/" className="flex items-center gap-3" aria-label="MotionSites Free home">
+          <NavLink to="/" className="flex items-center gap-3" aria-label="MotionSites 免费提示词库首页">
             <span className="motionsites-mark text-[34px] leading-none" aria-hidden="true">m</span>
             <span className="leading-none">
               <span className="block text-[22px] font-black lowercase tracking-[-0.05em]">motionsites</span>
@@ -65,13 +65,13 @@ export function AppShell({ children }: { children: ReactNode }) {
 
           <div className="hidden items-center gap-3 lg:flex">
             <span className="rounded-full border border-white/10 bg-[#202020] px-4 py-2 text-[12px] font-semibold text-[#d4d4d4]">
-              {catalogSummary.total} Free Prompts
+              {catalogSummary.total} 条免费提示词
             </span>
             <NavLink
               to="/search"
               className="rounded-2xl bg-white px-5 py-3 text-sm font-bold text-[#171717] shadow-[0_12px_32px_rgba(219,234,254,0.12)] transition-transform hover:-translate-y-0.5"
             >
-              Search Prompts
+              搜索提示词
             </NavLink>
           </div>
 
@@ -79,7 +79,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             className="grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/[0.04] text-white lg:hidden"
             type="button"
             onClick={() => setMenuOpen(true)}
-            aria-label="Open navigation"
+            aria-label="打开导航菜单"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             <Menu className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -87,14 +89,14 @@ export function AppShell({ children }: { children: ReactNode }) {
       </header>
 
       {menuOpen ? (
-        <div className="fixed inset-0 z-50 bg-[#171717]/96 backdrop-blur-xl lg:hidden" role="dialog" aria-modal="true">
+        <div id="mobile-navigation" className="fixed inset-0 z-50 overflow-y-auto bg-[#171717]/96 backdrop-blur-xl lg:hidden" role="dialog" aria-modal="true" aria-label="移动导航菜单">
           <div className="page-shell flex h-20 items-center justify-between">
             <span className="text-xl font-black lowercase tracking-[-0.05em]">motionsites</span>
             <button
               className="grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/[0.04] text-white"
               type="button"
               onClick={() => setMenuOpen(false)}
-              aria-label="Close navigation"
+              aria-label="关闭导航菜单"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -119,12 +121,12 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       {/* --- POPUP NOTICE MODAL --- */}
       {showNoticeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-md animate-fade-in" role="dialog" aria-modal="true" aria-labelledby="media-notice-title">
           <div className="relative w-full max-w-lg rounded-2xl border border-amber-500/40 bg-[#161412] p-6 shadow-2xl text-white">
             <button
               onClick={dismissModal}
               className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-1"
-              aria-label="Close modal"
+              aria-label="关闭提示"
             >
               <X className="size-5" />
             </button>
@@ -135,27 +137,25 @@ export function AppShell({ children }: { children: ReactNode }) {
               </div>
               <div>
                 <span className="text-[10px] uppercase font-mono tracking-widest text-amber-400 font-bold">
-                  Important Notice
+                  重要提示
                 </span>
-                <h3 className="text-xl font-bold text-white leading-tight">Media Preview Status</h3>
+                <h3 id="media-notice-title" className="text-xl font-bold leading-tight text-white">媒体预览状态</h3>
               </div>
             </div>
 
-            <p className="text-sm text-gray-300 leading-relaxed mb-4">
-              Please note that some media previews may currently have loading errors or be unavailable.{" "}
-              <strong className="text-amber-300 font-semibold">
-                Sorry for the preview issue, but don't worry — all prompts are 100% available!
-              </strong>
+            <p className="mb-4 text-sm leading-relaxed text-gray-300">
+              部分第三方图片或视频可能暂时无法加载。
+              <strong className="font-semibold text-amber-300"> 不用担心，所有英文提示词正文仍可正常查看、复制和下载。</strong>
             </p>
 
             <div className="p-3.5 rounded-xl bg-black/50 border border-amber-500/20 text-xs text-gray-300 space-y-2 mb-6">
               <div className="flex items-center gap-2 text-emerald-400 font-medium">
                 <CheckCircle className="size-4 shrink-0" />
-                <span>All prompt text files are fully accessible & ready to copy.</span>
+                <span>所有提示词文本均可正常访问和复制。</span>
               </div>
               <div className="flex items-center gap-2 text-amber-300 font-medium">
                 <Search className="size-4 shrink-0" />
-                <span>Just search for any prompt by name or keyword and enjoy!</span>
+                <span>可按中文分类词或英文名称、关键词搜索。</span>
               </div>
             </div>
 
@@ -167,13 +167,13 @@ export function AppShell({ children }: { children: ReactNode }) {
                 }}
                 className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20"
               >
-                Search Prompts Now
+                立即搜索提示词
               </button>
               <button
                 onClick={dismissModal}
                 className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-all border border-white/10"
               >
-                Got It & Close
+                知道了，关闭
               </button>
             </div>
           </div>
@@ -192,8 +192,8 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <Info className="size-4" />
               </span>
               <p className="text-gray-200">
-                <strong className="text-amber-400 font-semibold">Notice:</strong> Some media previews may have loading issues, but{" "}
-                <span className="text-amber-300 font-semibold">all prompts are 100% available!</span> Just search for any prompt and enjoy!
+                <strong className="font-semibold text-amber-400">提示：</strong>部分第三方媒体可能无法加载，
+                <span className="font-semibold text-amber-300">但所有英文提示词均可正常使用。</span>
               </p>
             </div>
 
@@ -202,13 +202,13 @@ export function AppShell({ children }: { children: ReactNode }) {
                 to="/search"
                 className="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition-all shadow-md"
               >
-                Search Prompts
+                搜索提示词
               </NavLink>
               <button
                 onClick={() => setShowBottomBanner(false)}
                 className="p-1 rounded-lg text-gray-400 hover:text-white transition-colors"
-                title="Dismiss Banner"
-                aria-label="Dismiss Notice Banner"
+                title="关闭提示条"
+                aria-label="关闭提示条"
               >
                 <X className="size-4" />
               </button>
@@ -222,15 +222,15 @@ export function AppShell({ children }: { children: ReactNode }) {
 
 function Footer() {
   const legalItems = [
-    { label: "Mirror Notice", to: "/mirror-notice" },
-    { label: "Terms of Use", to: "/legal/TERMS_OF_USE.md", external: true },
-    { label: "Fair Use Notice", to: "/legal/FAIR_USE_NOTICE.md", external: true },
-    { label: "Privacy Policy", to: "/legal/PRIVACY_POLICY.md", external: true },
-    { label: "License", to: "/legal/LICENSE", external: true },
-    { label: "Disclaimer", to: "/legal/DISCLAIMER.md", external: true },
-    { label: "DMCA Policy", to: "/legal/DMCA.md", external: true },
-    { label: "Code of Conduct", to: "/legal/CODE_OF_CONDUCT.md", external: true },
-    { label: "Security", to: "/legal/SECURITY.md", external: true },
+    { label: "镜像说明", to: "/mirror-notice" },
+    { label: "使用条款（英文原文）", to: "/legal/TERMS_OF_USE.md", external: true },
+    { label: "合理使用声明（英文原文）", to: "/legal/FAIR_USE_NOTICE.md", external: true },
+    { label: "隐私政策（英文原文）", to: "/legal/PRIVACY_POLICY.md", external: true },
+    { label: "MIT 许可证（英文原文）", to: "/legal/LICENSE", external: true },
+    { label: "免责声明（英文原文）", to: "/legal/DISCLAIMER.md", external: true },
+    { label: "DMCA 政策（英文原文）", to: "/legal/DMCA.md", external: true },
+    { label: "行为准则（英文原文）", to: "/legal/CODE_OF_CONDUCT.md", external: true },
+    { label: "安全说明（英文原文）", to: "/legal/SECURITY.md", external: true },
   ];
 
   return (
@@ -242,15 +242,13 @@ function Footer() {
             <span className="text-xl font-black lowercase tracking-[-0.05em]">motionsites</span>
           </div>
           <p className="mt-5 max-w-md text-sm leading-6 text-white/52">
-            A free prompt catalogue built from the local MotionSites archive. Copy prompts, preview references, and ship
-            landing pages without paid gates.
+            免费的网站设计提示词目录。无需注册即可查看参考、复制英文提示词并快速创建落地页。
           </p>
           <p className="mt-4 max-w-md text-xs leading-5 text-violet-100/70">
-            Unofficial mirror operated independently at motionsites.phh6.com. Not affiliated with or endorsed by
-            MotionSites or the upstream author. External previews contact third-party media providers.
+            本站是由 motionsites.phh6.com 独立运营的非官方镜像，与 MotionSites 或上游作者无隶属或背书关系。外部预览会直接连接第三方媒体服务。
           </p>
           <NavLink to="/mirror-notice" className="mt-3 inline-flex text-xs font-bold text-violet-200 hover:text-white">
-            Read the mirror and privacy notice
+            阅读镜像与隐私说明
           </NavLink>
           <div className="mt-6">
             <a
@@ -260,12 +258,12 @@ function Footer() {
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white"
             >
               <Github className="size-4" />
-              <span>Star on GitHub</span>
+              <span>在 GitHub 查看上游项目</span>
               <Star className="size-4 text-amber-400" fill="currentColor" />
             </a>
           </div>
         </div>
-        <FooterColumn title="Legal" items={legalItems} />
+        <FooterColumn title="法律与说明" items={legalItems} />
       </div>
     </footer>
   );

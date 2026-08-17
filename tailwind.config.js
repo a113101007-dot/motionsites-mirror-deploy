@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Geist", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         ink: {

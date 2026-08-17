@@ -28,29 +28,28 @@ export function HomePage() {
               href="https://designrocket.io/"
               className="mb-3 inline-flex items-center gap-2 text-sm font-bold text-[#ababab] transition-colors hover:text-white"
             >
-              Powered by <Rocket className="h-4 w-4 text-[#f97316]" aria-hidden="true" /> Design Rocket
+              由 <Rocket className="h-4 w-4 text-[#f97316]" aria-hidden="true" /> Design Rocket 提供支持
             </a>
-            <h1 className="text-[clamp(2.4rem,5.1vw,4.7rem)] font-black uppercase leading-[0.86] tracking-[-0.055em] text-[#f5f5f5]">
-              Unlock your AI
-              <span className="motion-hero-gradient block">Design Superpowers</span>
+            <h1 className="text-[clamp(2.4rem,5.1vw,4.7rem)] font-black leading-[1.08] tracking-[-0.035em] text-[#f5f5f5]">
+              解锁你的 AI
+              <span className="motion-hero-gradient block">网站设计超能力</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-[520px] text-base font-semibold leading-6 text-[#ababab]">
-              Build beautiful landing pages in minutes with our ready-to-use prompt library. Just copy, paste, and
-              launch.
+            <p className="mx-auto mt-5 max-w-[560px] text-base font-semibold leading-7 text-[#ababab]">
+              直接复制经过整理的网站设计提示词，几分钟内生成精美落地页，无需注册，也没有付费门槛。
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/search"
                 className="inline-flex h-14 items-center gap-2 rounded-full bg-gradient-to-b from-white to-[#dbeafe] px-8 text-lg font-black text-[#09090b] shadow-[0_16px_45px_rgba(219,234,254,0.16)] transition-transform hover:-translate-y-0.5"
               >
-                Search Premium Prompts
+                搜索高质量提示词
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>
             </div>
           </div>
 
           <p className="mt-8 text-center text-sm font-medium text-[#ababab]">
-            {catalogSummary.total} Premium Prompts · {catalogSummary.media.video || 0} animated previews · no paid gates
+            {catalogSummary.total} 条免费提示词 · {catalogSummary.media.video || 0} 个动态预览 · 无付费门槛
           </p>
         </div>
       </section>
@@ -59,9 +58,9 @@ export function HomePage() {
       {horizonxItems.length > 0 && (
         <section className="page-shell py-8 border-t border-blue-500/20">
           <SectionHeader
-            eyebrow="HorizonX Collection"
-            title="HorizonX 3D & Vibecoding Prompts"
-            copy="Extracted senior-grade React & WebGL particle hero prompts designed for v0, Lovable, Bolt, and Cursor."
+            eyebrow="HorizonX 精选"
+            title="HorizonX 3D 与氛围编程提示词"
+            copy="面向 v0、Lovable、Bolt 和 Cursor 的高级 React、WebGL 粒子首屏提示词。"
           />
           <PromptGrid items={horizonxItems} onPreview={setSelected} />
         </section>
@@ -71,9 +70,9 @@ export function HomePage() {
       {twentyFirstItems.length > 0 && (
         <section className="page-shell py-8 border-t border-emerald-500/20">
           <SectionHeader
-            eyebrow="21st.dev Registry"
-            title="21st.dev React & shadcn Component Prompts"
-            copy="Component prompts by community design engineers with npx shadcn installation anchors."
+            eyebrow="21st.dev 组件库"
+            title="21st.dev React 与 shadcn 组件提示词"
+            copy="由社区设计工程师创作，包含 npx shadcn 安装入口的组件提示词。"
           />
           <PromptGrid items={twentyFirstItems} onPreview={setSelected} />
         </section>
@@ -83,9 +82,9 @@ export function HomePage() {
       {superdesignItems.length > 0 && (
         <section className="page-shell py-8 border-t border-purple-500/20">
           <SectionHeader
-            eyebrow="Superdesign Canvas"
-            title="Superdesign AI Canvas & Motion Prompts"
-            copy="Infinite canvas, vector transformation, and micro-interaction prompts for AI product design agents."
+            eyebrow="Superdesign 画布"
+            title="Superdesign AI 画布与动效提示词"
+            copy="适用于 AI 产品设计智能体的无限画布、矢量变换和微交互提示词。"
           />
           <PromptGrid items={superdesignItems} onPreview={setSelected} />
         </section>
@@ -93,25 +92,25 @@ export function HomePage() {
 
       <section className="page-shell py-5">
         <SectionHeader
-          title="Featured Landing Page Prompts"
-          copy="Every card is free to inspect and copy. Original prompts and reconstructed working prompts are treated as usable launch material."
+          title="精选落地页提示词"
+          copy="每张卡片都可以免费查看和复制。原始提示词与工作版重建提示词均可直接作为创作起点。"
         />
         <PromptGrid items={featured} onPreview={setSelected} />
       </section>
 
       <section className="page-shell py-12">
         <SectionHeader
-          eyebrow="Animated backgrounds"
-          title="Media references ready to copy"
-          copy="Use preview URLs as visual references or quick background inputs when generating a matching landing page."
+          eyebrow="动态背景"
+          title="可直接复制的媒体参考"
+          copy="生成匹配的落地页时，可将预览 URL 用作视觉参考或快速背景输入。"
         />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {backgrounds.map((item) => (
             <article key={item.slug} className="overflow-hidden rounded-[20px] border border-[#353233] bg-[#232222]">
-              <MediaFrame item={item} className="h-[260px]" label="Preview" />
+              <MediaFrame item={item} className="h-[260px]" label="预览" />
               <div className="space-y-3 p-4">
                 <h2 className="text-lg font-black uppercase tracking-[-0.02em]">{item.title}</h2>
-                <CopyButton text={item.mediaUrl || item.posterUrl || item.prompt} label="Copy URL" />
+                <CopyButton text={item.mediaUrl || item.posterUrl || item.prompt} label="复制 URL" />
               </div>
             </article>
           ))}
@@ -120,9 +119,9 @@ export function HomePage() {
 
       <section className="page-shell py-12">
         <SectionHeader
-          eyebrow="Production gradients"
-          title="Glassy gradient backgrounds"
-          copy="Code-native gradients for sections, hero backdrops, and empty media states."
+          eyebrow="生产级渐变"
+          title="玻璃质感渐变背景"
+          copy="可直接用于页面区块、首屏背景和媒体空状态的 CSS 渐变。"
         />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {gradientPacks.map((pack) => (
@@ -136,7 +135,7 @@ export function HomePage() {
                   </span>
                 </div>
                 <p className="min-h-[60px] text-sm leading-5 text-white/54">{pack.description}</p>
-                <CopyButton text={`background: ${pack.css};`} label="Copy CSS" />
+                <CopyButton text={`background: ${pack.css};`} label="复制 CSS" />
               </div>
             </article>
           ))}

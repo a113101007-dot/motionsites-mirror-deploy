@@ -4,8 +4,8 @@ import { copyText } from "../lib/clipboard";
 
 export function CopyButton({
   text,
-  label = "Copy Prompt",
-  copiedLabel = "Copied",
+  label = "复制提示词",
+  copiedLabel = "已复制",
   variant = "default",
 }: {
   text: string;

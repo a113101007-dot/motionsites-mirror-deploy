@@ -16,19 +16,19 @@ export function ExtractedExamplesPage() {
       <div className="max-w-6xl mx-auto mb-12 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono uppercase tracking-widest mb-4">
           <Sparkles className="size-3.5" />
-          <span>Interactive Component Demos</span>
+          <span>交互组件演示</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          6 Live Interactive Examples
+          6 个在线交互示例
         </h1>
         <p className="text-gray-400 text-base max-w-2xl mx-auto leading-relaxed">
-          Built from the extracted prompt libraries of <span className="text-blue-400 font-semibold">HorizonX</span>, <span className="text-purple-400 font-semibold">Superdesign</span>, and <span className="text-emerald-400 font-semibold">21st.dev</span>.
+          基于 <span className="text-blue-400 font-semibold">HorizonX</span>、<span className="text-purple-400 font-semibold">Superdesign</span> 和 <span className="text-emerald-400 font-semibold">21st.dev</span> 的提取提示词库构建。
         </p>
 
         {/* Category Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
           {[
-            { id: "all", label: "All 6 Examples" },
+            { id: "all", label: "全部 6 个示例" },
             { id: "horizonx", label: "HorizonX (2)" },
             { id: "superdesign", label: "Superdesign (2)" },
             { id: "21st", label: "21st.dev (2)" },
@@ -55,7 +55,7 @@ export function ExtractedExamplesPage() {
           <div className="space-y-8">
             <div className="flex items-center gap-3 border-b border-blue-500/30 pb-3">
               <div className="size-2.5 rounded-full bg-blue-500" />
-              <h2 className="text-xl font-bold text-blue-400 tracking-wide">HorizonX — 3D & Liquid Components</h2>
+              <h2 className="text-xl font-bold text-blue-400 tracking-wide">HorizonX — 3D 与流体组件</h2>
             </div>
             <MorphoParticlesDemo />
             <AurelLiquidHeroDemo />
@@ -67,7 +67,7 @@ export function ExtractedExamplesPage() {
           <div className="space-y-8">
             <div className="flex items-center gap-3 border-b border-purple-500/30 pb-3">
               <div className="size-2.5 rounded-full bg-purple-500" />
-              <h2 className="text-xl font-bold text-purple-400 tracking-wide">Superdesign — Canvas & Glassmorphic UI</h2>
+              <h2 className="text-xl font-bold text-purple-400 tracking-wide">Superdesign — 画布与玻璃拟态界面</h2>
             </div>
             <SuperdesignCanvasDemo />
             <SuperdesignGlassDashboardDemo />
@@ -79,7 +79,7 @@ export function ExtractedExamplesPage() {
           <div className="space-y-8">
             <div className="flex items-center gap-3 border-b border-emerald-500/30 pb-3">
               <div className="size-2.5 rounded-full bg-emerald-500" />
-              <h2 className="text-xl font-bold text-emerald-400 tracking-wide">21st.dev — Shaders & Autonomous Agents</h2>
+              <h2 className="text-xl font-bold text-emerald-400 tracking-wide">21st.dev — 着色器与自主智能体</h2>
             </div>
             <TwentyFirstNeonShaderDemo />
             <TwentyFirstAgentPipelineDemo />

@@ -7,9 +7,9 @@ export function GradientsPage() {
   return (
     <section className="page-shell py-14">
       <SectionHeader
-        eyebrow="Free gradient collection"
-        title="Production-ready gradients in high resolution"
-        copy="Copy CSS for glassy hero backgrounds, CTA sections, prompt-card fallbacks, and launch pages."
+        eyebrow="免费渐变合集"
+        title="可直接用于生产的高分辨率渐变"
+        copy="复制 CSS，用于玻璃质感首屏、行动号召区域、提示词卡片占位和产品发布页。"
       />
       <div className="grid gap-4 md:grid-cols-2">
         {gradientPacks.map((pack) => (
@@ -24,7 +24,7 @@ export function GradientsPage() {
             <div className="motion-gradient-preview relative h-[340px]" style={{ background: pack.css }}>
               <div className="scene-grid absolute inset-0 opacity-35" />
               <div className="absolute bottom-5 left-5 right-5">
-                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-white/62">{pack.count} swatches</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-white/62">{pack.count} 个色样</p>
                 <h2 className="mt-2 text-4xl font-black uppercase leading-[0.9] tracking-[-0.05em] text-white">
                   {pack.title}
                 </h2>
@@ -32,7 +32,7 @@ export function GradientsPage() {
             </div>
             <div className="relative z-20 grid gap-4 p-5 lg:grid-cols-[1fr_auto] lg:items-center">
               <p className="text-sm leading-6 text-white/58">{pack.description}</p>
-              <CopyButton text={`background: ${pack.css};`} label="Copy CSS" variant="gradient" />
+              <CopyButton text={`background: ${pack.css};`} label="复制 CSS" variant="gradient" />
             </div>
           </article>
         ))}

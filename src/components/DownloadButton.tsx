@@ -4,8 +4,8 @@ import { useState } from "react";
 export function DownloadButton({
   text,
   filename = "prompt.md",
-  label = "Download",
-  downloadedLabel = "Downloaded",
+  label = "下载",
+  downloadedLabel = "已下载",
   variant = "default",
 }: {
   text: string;

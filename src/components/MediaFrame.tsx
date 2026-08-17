@@ -1,4 +1,5 @@
 import type { CatalogItem } from "../data/prompts.generated";
+import { getCategoryLabel } from "../i18n/zh-CN";
 
 const fallbackGradients = [
   "radial-gradient(circle at 20% 15%, rgba(255,101,137,.68), transparent 26%), linear-gradient(135deg, #272727, #141414 64%, #421017)",
@@ -64,11 +65,11 @@ export function MediaFrame({
       {!compact ? (
         <>
           <div className="absolute left-3 top-3 z-40 rounded-full border border-white/10 bg-black/45 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-white/80 backdrop-blur-md">
-            {label || (item.mediaType === "none" ? "Generated" : item.mediaType)}
+            {label || (item.mediaType === "none" ? "生成预览" : item.mediaType === "video" ? "动态预览" : "图片预览")}
           </div>
           <div className="absolute bottom-3 left-3 right-3 z-40">
-            <p className="line-clamp-2 text-sm font-black uppercase leading-4 tracking-[-0.01em] text-white">{item.title}</p>
-            <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/54">{item.category}</p>
+            <p lang="en" className="line-clamp-2 text-sm font-black uppercase leading-4 tracking-[-0.01em] text-white">{item.title}</p>
+            <p className="mt-1 text-[11px] font-semibold tracking-[0.08em] text-white/54">{getCategoryLabel(item.category)}</p>
           </div>
         </>
       ) : null}

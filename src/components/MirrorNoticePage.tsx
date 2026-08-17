@@ -8,50 +8,43 @@ export function MirrorNoticePage() {
   return (
     <section className="page-shell py-16 sm:py-24">
       <div className="mx-auto max-w-4xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-violet-100">
+        <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-300/10 px-4 py-2 text-xs font-bold tracking-[0.12em] text-violet-100">
           <ShieldCheck className="size-4" aria-hidden="true" />
-          Mirror notice
+          镜像说明
         </div>
-        <h1 className="mt-6 text-4xl font-black tracking-[-0.05em] text-white sm:text-6xl">
-          An independently operated, unofficial mirror.
+        <h1 className="mt-6 text-4xl font-black leading-tight tracking-[-0.035em] text-white sm:text-6xl">
+          这是一个独立运营的非官方镜像。
         </h1>
-        <p className="mt-6 max-w-3xl text-base leading-7 text-white/64 sm:text-lg">
-          This site mirrors the open-source MotionSites Prompt Collection for reliable browsing at
-          motionsites.phh6.com. It is not affiliated with, endorsed by, or maintained by MotionSites,
-          the upstream author, or any brands referenced by the prompts.
+        <p className="mt-6 max-w-3xl text-base leading-8 text-white/64 sm:text-lg">
+          本站在 motionsites.phh6.com 提供 MotionSites Prompt Collection 的稳定浏览体验。本站与 MotionSites、上游作者及提示词中提到的任何品牌均无隶属、授权、维护或背书关系。
+        </p>
+        <p className="mt-4 max-w-3xl rounded-2xl border border-amber-300/15 bg-amber-300/[0.06] p-4 text-sm leading-7 text-amber-100/80">
+          本页中文内容仅用于说明本镜像的运营事实。许可证、使用条款、隐私政策、免责声明及其他法律文件均以链接中的英文原文为准；如有不一致，以英文原文为准。
         </p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <NoticeCard title="Upstream source">
+          <NoticeCard title="上游来源">
             <p>
-              The application and prompt catalogue are based on commit <code>{upstreamCommit.slice(0, 12)}</code> of
-              the upstream repository. The original copyright and license notices are preserved.
+              本应用及提示词目录基于上游提交 <code lang="en">{upstreamCommit.slice(0, 12)}</code>。原始版权声明和许可证已完整保留。
             </p>
-            <ExternalLinkRow href={upstreamRepository} label="View the upstream repository" />
+            <ExternalLinkRow href={upstreamRepository} label="查看上游 GitHub 仓库" />
           </NoticeCard>
-          <NoticeCard title="Privacy and external media">
+          <NoticeCard title="隐私与外部媒体">
             <p>
-              This mirror does not run Vercel Analytics or a replacement first-party analytics service. Prompt
-              previews may load images, videos, fonts, frames, or other resources directly from third parties.
-              Those providers can receive technical request data such as your IP address, browser information,
-              and referrer.
+              本镜像未启用 Vercel Analytics，也没有添加替代的一方分析服务。提示词预览可能会直接加载第三方图片、视频、字体、页面框架或其他资源，这些服务可能获取你的 IP 地址、浏览器信息和来源站点。
             </p>
           </NoticeCard>
-          <NoticeCard title="Licensing and third-party rights">
+          <NoticeCard title="许可与第三方权利">
             <p>
-              Upstream software is distributed under the MIT License. That license does not automatically grant
-              rights to every third-party image, video, trademark, design reference, or externally hosted asset.
-              Review the upstream terms and source-specific rights before commercial reuse.
+              上游软件采用 MIT 许可证发布，但该许可证不会自动授予所有第三方图片、视频、商标、设计参考或外部托管资源的使用权。商业使用前，请自行核查上游条款和具体来源授权。
             </p>
-            <ExternalLinkRow href="/legal/LICENSE" label="Read the MIT License" />
+            <ExternalLinkRow href="/legal/LICENSE" label="阅读 MIT 许可证英文原文" />
           </NoticeCard>
-          <NoticeCard title="Rights and takedown contact">
+          <NoticeCard title="权利与下架联系">
             <p>
-              For a rights concern, inaccurate attribution, or takedown request related to this mirror, contact
-              the mirror operator through the GitHub profile below and include the affected URL and supporting
-              details.
+              如果你发现权利问题、归属错误，或需要提交下架请求，请通过下方 GitHub 主页联系镜像运营者，并提供受影响的页面地址和相关证明。
             </p>
-            <ExternalLinkRow href={mirrorContact} label="Contact the mirror operator on GitHub" github />
+            <ExternalLinkRow href={mirrorContact} label="通过 GitHub 联系镜像运营者" github />
           </NoticeCard>
         </div>
       </div>
@@ -61,8 +54,8 @@ export function MirrorNoticePage() {
 
 function NoticeCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <article className="rounded-3xl border border-white/10 bg-white/[0.035] p-6 text-sm leading-6 text-white/62">
-      <h2 className="mb-4 text-lg font-black tracking-[-0.03em] text-white">{title}</h2>
+    <article className="rounded-3xl border border-white/10 bg-white/[0.035] p-6 text-sm leading-7 text-white/62">
+      <h2 className="mb-4 text-lg font-black text-white">{title}</h2>
       {children}
     </article>
   );

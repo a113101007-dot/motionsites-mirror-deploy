@@ -4,7 +4,7 @@ import { PromptCard } from "./PromptCard";
 export function PromptGrid({
   items,
   onPreview,
-  emptyCopy = "No prompts match this filter.",
+  emptyCopy = "没有符合当前条件的提示词。",
 }: {
   items: readonly CatalogItem[];
   onPreview: (item: CatalogItem) => void;
