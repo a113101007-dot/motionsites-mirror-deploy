@@ -1,0 +1,16 @@
+.git
+node_modules
+dist
+coverage
+.vercel
+assets
+extractions
+demos
+prompts
+motionsites_all_prompts.json
+missing_prompts.json
+preview_mapping.json
+*.log
+.env*
+README.md
+UPSTREAM.md

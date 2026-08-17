@@ -1,0 +1,28 @@
+{
+  "total": 661,
+  "access": {
+    "free": 661
+  },
+  "sourceModes": {
+    "original": 661
+  },
+  "media": {
+    "video": 376,
+    "image": 244,
+    "none": 41
+  },
+  "categories": {
+    "Landing Pages": 385,
+    "Pricing": 10,
+    "Agency": 17,
+    "SaaS": 17,
+    "CTA": 9,
+    "Social Proof": 6,
+    "Features": 16,
+    "Footers": 10,
+    "HorizonX Library": 93,
+    "21st.dev Registry": 93,
+    "Superdesign Canvas": 5
+  },
+  "generatedAt": "2026-07-22T09:33:39.969Z"
+}
