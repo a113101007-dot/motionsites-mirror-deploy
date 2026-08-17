@@ -94,13 +94,6 @@ jobs:
           curl -fsS http://127.0.0.1:18080/legal/LICENSE >/dev/null
           test "$(docker inspect --format '{{.Config.User}}' motionsites-smoke)" != ""
 
-      - name: Attest image provenance
-        uses: actions/attest-build-provenance@v2
-        with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: true
-
       - name: Publish build summary
         run: |
           {
